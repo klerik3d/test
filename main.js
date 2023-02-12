@@ -1,7 +1,7 @@
 const TelegramBot = require('node-telegram-bot-api');
 
 // replace the value below with the Telegram token you receive from @BotFather
-const token = 'YOUR_TELEGRAM_BOT_TOKEN';
+const token = '5943227808:AAGZJ754LqKBD7V8CLlfd492dLbOJL7PElg';
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
@@ -25,5 +25,10 @@ bot.on('message', (msg) => {
   const chatId = msg.chat.id;
 
   // send a message to the chat acknowledging receipt of their message
-  bot.sendMessage(chatId, 'Received your message');
+  message = reverseStr(msg.text)
+  console.log(msg)
+  bot.sendMessage(chatId, message);
 });
+function reverseStr(str) {
+  return str.split("").reverse().join("");
+}
